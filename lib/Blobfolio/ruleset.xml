@@ -62,7 +62,7 @@
 	<rule ref="Generic.Functions.CallTimePassByReference"/>
 	<rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
 	<rule ref="Squiz.Functions.LowercaseFunctionKeywords"/>
-	<rule ref="WordPress.Functions.DontExtract"/>
+	<rule ref="WordPress.PHP.DontExtract"/>
 	<rule ref="Generic.Files.ByteOrderMark" />
 	<rule ref="Generic.Files.EndFileNewline"/>
 
