@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<ruleset name="Blobfolio">
+	<description>A PHP coding standard for Blobfolio projects.</description>
+
+	<autoload>./PHPCSAliases.php</autoload>
+
+	<!-- don't scan Composer libs or NPM modules -->
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+
+	<!-- Arrays -->
+	<rule ref="Generic.Arrays.DisallowShortArraySyntax"/>
+	<rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
+	<rule ref="WordPress.Arrays.CommaAfterArrayItem" />
+
+	<!-- Comments -->
+	<rule ref="Generic.Commenting.Todo"/>
+
+	<!-- Control Structures -->
+	<rule ref="Blobfolio.ControlStructures.ControlSignature"/>
+	<rule ref="Blobfolio.ControlStructures.InlineControlStructure"/>
+	<rule ref="PSR2.ControlStructures.ElseIfDeclaration"/>
+
+	<rule ref="Squiz.Strings.DoubleQuoteUsage"/>
+	<rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+		<severity>0</severity>
+	</rule>
+
+	<!-- Misc Analysis -->
+	<rule ref="Generic.CodeAnalysis.EmptyStatement"/>
+	<rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
+
+	<!-- Files -->
+	<rule ref="Generic.Files.LineEndings">
+		<properties>
+			<property name="eolChar" value="\n"/>
+		</properties>
+	</rule>
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="lineLimit" value="300"/>
+			<property name="absoluteLineLimit" value="400"/>
+		</properties>
+	</rule>
+	<rule ref="Blobfolio.Files.LowercasedFilename"/>
+	<rule ref="Generic.Files.OneClassPerFile"/>
+	<rule ref="Generic.Files.OneInterfacePerFile"/>
+	<rule ref="Generic.Files.OneTraitPerFile"/>
+	<rule ref="PSR2.Files.ClosingTag"/>
+
+	<!-- Misc Formatting -->
+	<rule ref="Generic.Formatting.SpaceAfterCast"/>
+	<rule ref="Squiz.WhiteSpace.CastSpacing" />
+	<rule ref="WordPress.WhiteSpace.CastStructureSpacing"/>
+
+	<!-- Functions -->
+	<rule ref="Blobfolio.Functions.OpeningFunctionBraceKernighanRitchie">
+		<properties>
+			<property name="checkClosures" value="true"/>
+		</properties>
+	</rule>
+	<rule ref="Generic.Functions.CallTimePassByReference"/>
+	<rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+	<rule ref="Squiz.Functions.LowercaseFunctionKeywords"/>
+	<rule ref="WordPress.Functions.DontExtract"/>
+	<rule ref="Generic.Files.ByteOrderMark" />
+	<rule ref="Generic.Files.EndFileNewline"/>
+
+	<!-- Naming Conventions -->
+	<rule ref="Blobfolio.NamingConventions.ValidFunctionName"/>
+	<rule ref="Generic.NamingConventions.ConstructorName"/>
+	<rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+	<!-- Namespaces -->
+	<rule ref="PSR2.Namespaces.NamespaceDeclaration"/>
+
+	<!-- Comparison Operators -->
+	<rule ref="Blobfolio.Operators.ComparisonOperatorUsage"/>
+
+	<!-- PHP -->
+	<rule ref="Blobfolio.PHP.CharacterBeforePHPOpeningTag"/>
+	<rule ref="Generic.PHP.DeprecatedFunctions"/>
+	<rule ref="Generic.PHP.ForbiddenFunctions">
+		<properties>
+			<property name="forbiddenFunctions" type="array" value="sizeof=>count,delete=>unset,print=>echo,create_function=>null,pcntl_alarm=>null,pcntl_fork=>null,pcntl_waitpid=>null,pcntl_wait=>null,pcntl_wifexited=>null,pcntl_wifstopped=>null,pcntl_wifsignaled=>null,pcntl_wexitstatus=>null,pcntl_wtermsig=>null,pcntl_wstopsig=>null,pcntl_signal=>null,pcntl_signal_dispatch=>null,pcntl_get_last_error=>null,pcntl_strerror=>null,pcntl_sigprocmask=>null,pcntl_sigwaitinfo=>null,pcntl_sigtimedwait=>null,pcntl_exec=>null,pcntl_getpriority=>null,pcntl_setpriority=>null,exec=>null,shell_exec=>null"/>
+		</properties>
+	</rule>
+	<rule ref="Generic.PHP.LowerCaseConstant"/>
+	<rule ref="Generic.PHP.LowerCaseKeyword"/>
+	<rule ref="Generic.PHP.Syntax"/>
+	<rule ref="Squiz.PHP.Eval"/>
+	<rule ref="Squiz.PHP.Eval.Discouraged">
+		<type>error</type>
+		<message>eval() is a security risk so not allowed.</message>
+	</rule>
+	<rule ref="Squiz.PHP.LowercasePHPFunctions"/>
+	<rule ref="WordPress.PHP.YodaConditions"/>
+	<rule ref="WordPress.PHP.StrictComparisons" />
+	<rule ref="WordPress.PHP.StrictInArray" />
+
+	<!-- Strings -->
+	<rule ref="Generic.Strings.UnnecessaryStringConcat"/>
+	<rule ref="Squiz.Strings.EchoedStrings"/>
+
+	<!-- Whitespace -->
+	<rule ref="Blobfolio.WhiteSpace.OperatorSpacing"/>
+	<arg name="tab-width" value="4"/>
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+	<rule ref="PEAR.WhiteSpace.ScopeClosingBrace"/>
+	<rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+	<rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+
+	<rule ref="Squiz.Commenting">
+		<!-- Excluded to allow /* translators: ... */ comments -->
+		<exclude name="Squiz.Commenting.BlockComment.SingleLine"/>
+		<!-- Sniff seems to require indenting with spaces -->
+		<exclude name="Squiz.Commenting.BlockComment.FirstLineIndent"/>
+		<!-- Sniff seems to require indenting with spaces -->
+		<exclude name="Squiz.Commenting.BlockComment.LineIndent"/>
+		<!-- Sniff seems to require indenting with spaces -->
+		<exclude name="Squiz.Commenting.BlockComment.LastLineIndent"/>
+		<!-- WP requires /** for require() et al. See https://github.com/squizlabs/PHP_CodeSniffer/pull/581 -->
+		<exclude name="Squiz.Commenting.BlockComment.WrongStart"/>
+		<!-- WP handbook doesn't clarify one way or another, so ignore -->
+		<exclude name="Squiz.Commenting.BlockComment.NoEmptyLineAfter"/>
+
+		<!-- WP prefers indicating @since, @package, @subpackage etc in class comments -->
+		<exclude name="Squiz.Commenting.ClassComment.TagNotAllowed"/>
+
+		<!-- WP doesn't require //end ... for classes and functions -->
+		<exclude name="Squiz.Commenting.ClosingDeclarationComment.Missing"/>
+
+		<!-- Excluded to allow param documentation for arrays  -->
+		<exclude name="Squiz.Commenting.DocCommentAlignment.SpaceAfterStar"/>
+
+		<!-- WP doesn't require a @author value for Squiz -->
+		<exclude name="Squiz.Commenting.FileComment.IncorrectAuthor"/>
+		<!-- WP doesn't require a @copyright value for Squiz -->
+		<exclude name="Squiz.Commenting.FileComment.IncorrectCopyright"/>
+		<!-- WP doesn't require @author tags -->
+		<exclude name="Squiz.Commenting.FileComment.MissingAuthorTag"/>
+		<!-- WP doesn't require @subpackage tags -->
+		<exclude name="Squiz.Commenting.FileComment.MissingSubpackageTag"/>
+		<!-- WP doesn't require @copyright tags -->
+		<exclude name="Squiz.Commenting.FileComment.MissingCopyrightTag"/>
+		<!-- WP has a different prefered order of tags -->
+		<exclude name="Squiz.Commenting.FileComment.PackageTagOrder"/>
+		<!-- WP has a different prefered order of tags -->
+		<exclude name="Squiz.Commenting.FileComment.SubpackageTagOrder"/>
+		<!-- WP has a different prefered order of tags -->
+		<exclude name="Squiz.Commenting.FileComment.AuthorTagOrder"/>
+		<!-- WP has a different prefered order of tags -->
+		<exclude name="Squiz.Commenting.FileComment.CopyrightTagOrder"/>
+
+		<!-- WP prefers int and bool instead of integer and boolean -->
+		<exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/>
+		<!-- WP prefers int and bool instead of integer and boolean -->
+		<exclude name="Squiz.Commenting.FunctionComment.InvalidReturn"/>
+		<!-- WP prefers indicating a @return null for early returns -->
+		<exclude name="Squiz.Commenting.FunctionComment.InvalidReturnNotVoid"/>
+		<!-- WP states not all functions require @return -->
+		<exclude name="Squiz.Commenting.FunctionComment.MissingReturn"/>
+		<!-- Excluded to allow param documentation for arrays  -->
+		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentNotCapital"/>
+		<!-- Excluded to allow param documentation for arrays  -->
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamName"/>
+		<!-- WP doesn't require type hints -->
+		<exclude name="Squiz.Commenting.FunctionComment.TypeHintMissing"/>
+
+		<!-- Exclude to allow duplicate hooks to be documented -->
+		<!--<exclude name="Squiz.Commenting.InlineComment.DocBlock"/>-->
+		<!-- Excluded to allow /* translators: ... */ comments -->
+		<!--<exclude name="Squiz.Commenting.InlineComment.NotCapital"/>-->
+
+		<exclude name="Squiz.Commenting.VariableComment.WrongStyle"/>
+		<exclude name="Squiz.Commenting.VariableComment.Missing"/>
+
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+
+		<!-- Not in Inline Docs standard, and a code smell -->
+		<exclude name="Squiz.Commenting.LongConditionClosingComment"/>
+
+		<!-- Not in Inline Docs standard, and needed to bypass WPCS checks -->
+		<exclude name="Squiz.Commenting.PostStatementComment"/>
+
+		<!-- WP prefers int and bool instead of integer and boolean -->
+		<exclude name="Squiz.Commenting.VariableComment.IncorrectVarType"/>
+		<!-- WP demands a @since tag for class variables -->
+		<exclude name="Squiz.Commenting.VariableComment.TagNotAllowed"/>
+		<!-- WP prefers @since first -->
+		<exclude name="Squiz.Commenting.VariableComment.VarOrder"/>
+
+		<!-- It is too early for PHP7 features to be required -->
+		<exclude name="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing" />
+		<exclude name="Squiz.Commenting.InlineComment.SpacingAfter" />
+		<exclude name="Squiz.Commenting.ClassComment.Missing" />
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType" />
+	</rule>
+
+	<!-- Make this sniff less likely to trigger on end comments. -->
+	<rule ref="Squiz.PHP.CommentedOutCode">
+	    <properties>
+	        <property name="maxPercentage" value="75" />
+	    </properties>
+	</rule>
+
+	<rule ref="Blobfolio.Commenting.InlineComment" />
+
+	<rule ref="Generic.Commenting">
+		<!-- WP has different alignment of tag values -->
+		<exclude name="Generic.Commenting.DocComment.TagValueIndent"/>
+		<!-- WP has a different prefered order of tags -->
+		<exclude name="Generic.Commenting.DocComment.ParamNotFirst"/>
+		<!-- Excluded to allow param documentation for arrays  -->
+		<exclude name="Generic.Commenting.DocComment.ParamGroup"/>
+		<!-- WP prefers no empty line between @param tags and @return -->
+		<exclude name="Generic.Commenting.DocComment.NonParamGroup"/>
+		<!-- Excluded to allow param documentation for arrays  -->
+		<exclude name="Generic.Commenting.DocComment.TagsNotGrouped"/>
+		<!-- Exclude to allow duplicate hooks to be documented -->
+		<exclude name="Generic.Commenting.DocComment.ContentAfterOpen"/>
+		<!-- Exclude to allow duplicate hooks to be documented -->
+		<exclude name="Generic.Commenting.DocComment.SpacingBeforeShort"/>
+		<!-- Exclude to allow duplicate hooks to be documented -->
+		<exclude name="Generic.Commenting.DocComment.ContentBeforeClose"/>
+
+		<!-- WP allows @todo's in comments -->
+		<exclude name="Generic.Commenting.Todo.CommentFound"/>
+		<!-- WP allows @todo's in comments -->
+		<exclude name="Generic.Commenting.Todo.TaskFound"/>
+	</rule>
+</ruleset>

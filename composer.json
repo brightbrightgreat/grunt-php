@@ -1,0 +1,17 @@
+{
+	"name": "brightbrightgreat/grunt-php",
+	"require": {
+		"php" : ">=7.0",
+		"wp-coding-standards/wpcs" : "*",
+		"squizlabs/php_codesniffer": "^3"
+	},
+	"config": {
+		"vendor-dir": "lib/vendor",
+		"preferred-install": "dist"
+	},
+	"minimum-stability" : "RC",
+	"scripts"    : {
+		"post-install-cmd": "./postinstall.sh",
+		"post-update-cmd" : "./postinstall.sh"
+	}
+}

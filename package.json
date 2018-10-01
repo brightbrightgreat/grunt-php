@@ -1,0 +1,41 @@
+{
+  "name": "grunt-blobfolio",
+  "description": "Blobfolio PHP coding standards",
+  "homepage": "https:\/\/blobfolio.com",
+  "author": {
+    "name": "Josh Stoik",
+    "email": "josh@blobfolio.com",
+    "url": "https:\/\/blobfolio.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git:\/\/git@blobfolio.com:3417\/grunt-blobfolio"
+  },
+  "contributors": [
+    {
+      "name": "Josh Stoik",
+      "email": "josh@blobfolio.com",
+      "url": "https:\/\/blobfolio.com"
+    }
+  ],
+  "version": "0.6.3",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-notify": "*"
+  },
+  "keywords": [
+    "gruntplugin",
+    "phpcs",
+    "blobfolio"
+  ],
+  "scripts": {
+    "postinstall": "curl -o composer.phar https://getcomposer.org/composer.phar && chmod +x composer.phar && ./composer.phar install"
+  },
+  "private": true
+}
